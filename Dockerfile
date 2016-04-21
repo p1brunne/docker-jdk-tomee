@@ -35,7 +35,10 @@ RUN set -x \
   && mkdir /usr/local/tomee/webapps \
   && rm -rf /usr/local/tomee/lib/slf4j-jdk14-1.7.7.jar
 
-
+RUN apt-get update \
+    && apt-get -q -y install netcat \
+    && apt-get -q -y install less \
+    && apt-get -q -y install vim
 
 EXPOSE 8080 8000
 # run with default jpda debug values for debugging from the IDE
