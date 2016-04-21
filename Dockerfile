@@ -30,7 +30,7 @@ RUN set -x \
 	&& mv apache-tomee-jaxrs-1.7.3/* /usr/local/tomee \
 	&& rm -Rf apache-tomee-jaxrs-1.7.3 \
 	&& rm bin/*.bat \
-	&& rm tomee.tar.gz*
+	&& rm tomee.tar.gz* \
   && rm -rf /usr/local/tomee/webapps \
   && mkdir /usr/local/tomee/webapps \
   && rm -rf /usr/local/tomee/lib/slf4j-jdk14-1.7.7.jar
