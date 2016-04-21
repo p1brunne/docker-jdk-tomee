@@ -31,10 +31,21 @@ RUN set -x \
 	&& rm -Rf apache-tomee-jaxrs-1.7.3 \
 	&& rm bin/*.bat \
 	&& rm tomee.tar.gz*
+  && rm -rf /usr/local/tomee/webapps \
+  && mkdir /usr/local/tomee/webapps \
+  && rm -rf /usr/local/tomee/lib/slf4j-jdk14-1.7.7.jar
 
 
 
 EXPOSE 8080 8000
 # run with default jpda debug values for debugging from the IDE
-CMD ["catalina.sh", "jpda", "run"]
+
+
+COPY ./lib /usr/local/tomee/lib/
+
+COPY ./entrypoint.sh /
+# contains the check for a linked and named DB:3306
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["catalina.sh","jpda","run"]
 
