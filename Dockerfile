@@ -43,6 +43,8 @@ RUN apt-get update \
 EXPOSE 8080 8000
 # run with default jpda debug values for debugging from the IDE
 
+# unix tools and others work better with
+ENV TERM=xterm
 
 COPY ./lib /usr/local/tomee/lib/
 
